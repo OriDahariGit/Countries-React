@@ -1,13 +1,19 @@
-import CountriesData from '../assets/CountriesData.json';
+import { Link } from 'react-router-dom';
 import Country from "./Country";
 
-const CountryGrid = () => {
+const CountryGrid = ({data}) => {
+
+    console.log();
     return (
         <main className="main">
             <div className="container">
                 <section id="countries-grid" className="countries-grid">
-                    {CountriesData.map( (country, index) => {
-                        return <Country key={index} data={country} />
+                    {data.map( (country, index) => {
+                        return (
+                            <Link to={`/country-info?country=${country.name}`} key={index}>
+                                <Country data={country} />
+                            </Link>
+                        )
                     })}
                 </section>
             </div>
